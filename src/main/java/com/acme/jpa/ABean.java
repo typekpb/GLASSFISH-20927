@@ -4,14 +4,21 @@ import java.util.HashSet;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.annotation.PostConstruct;
+import javax.ejb.Startup;
+import javax.ejb.Singleton;
 
-@Stateless
+/* @Stateless */
+@Startup
+@Singleton
 public class ABean {
 
   @EJB
   BBeanRemote bBean;
-  
-  public void worksOK(HashSet<String> set) {
+ 
+  @PostConstruct
+  public void worksOK() {
+HashSet<String> set =new HashSet<String>();
     // this would work!
 //     set.add("this will wait on jdk 1.7.0_u45");
   
